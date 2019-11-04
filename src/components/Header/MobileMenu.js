@@ -10,7 +10,7 @@ const Toggle = ({ children }) => {
   const [isToggledOn, setToggle] = useState(false)
   const toggle = () => setToggle(!isToggledOn)
   const theme = useTheme()
-  const color = theme.colors.white
+  const color = theme.colors.headerBg
 
   return (
     <div

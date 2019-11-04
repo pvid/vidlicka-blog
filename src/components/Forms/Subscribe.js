@@ -102,7 +102,7 @@ class SignUp extends React.Component {
                     }
                     .field-error {
                       display: block;
-                      color: ${theme.colors.red};
+                      color: ${theme.colors.text};
                       font-size: 80%;
                     }
                     input,
@@ -119,9 +119,6 @@ class SignUp extends React.Component {
                         width: 100%;
                         display: flex;
                         flex-direction: column;
-                      }
-                      button {
-                        margin: 20px 0 0 0;
                       }
                     }
                   `}
@@ -145,7 +142,7 @@ class SignUp extends React.Component {
                       aria-label="your first name"
                       aria-required="false"
                       name="first_name"
-                      placeholder="Jane"
+                      placeholder="Name"
                       type="text"
                     />
                   </label>
@@ -173,7 +170,7 @@ class SignUp extends React.Component {
                       aria-label="your email address"
                       aria-required="true"
                       name="email_address"
-                      placeholder="jane@acme.com"
+                      placeholder="developer@domain.com"
                       type="email"
                     />
                   </label>
@@ -181,14 +178,18 @@ class SignUp extends React.Component {
                     data-element="submit"
                     type="submit"
                     disabled={isSubmitting}
+                    css={css`
+                      margin-bottom: 0.5rem;
+                    `}
                   >
                     {!isSubmitting && 'Submit'}
                     {isSubmitting && 'Submitting...'}
                   </button>
                 </Form>
               )}
-              {submitted &&
-                !isSubmitting && <PostSubmissionMessage response={response} />}
+              {submitted && !isSubmitting && (
+                <PostSubmissionMessage response={response} />
+              )}
               {errorMessage && <div>{errorMessage}</div>}
             </>
           )}

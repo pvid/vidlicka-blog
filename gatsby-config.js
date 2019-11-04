@@ -4,97 +4,109 @@ const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
-
-module.exports = {
-  pathPrefix: config.pathPrefix,
-  siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
-    title: config.siteTitle,
-    twitterHandle: config.twitterHandle,
-    description: config.siteDescription,
-    keywords: ['Video Blogger'],
-    canonicalUrl: config.siteUrl,
-    image: config.siteLogo,
-    author: {
-      name: config.author,
-      minibio: `
-        <strong>egghead</strong> is the premier place on the internet for 
-        experienced developers to enhance their skills and stay current
-        in the fast-faced field of web development.
-      `,
-    },
-    organization: {
-      name: config.organization,
-      url: config.siteUrl,
-      logo: config.siteLogo,
-    },
-    social: {
-      twitter: config.twitterHandle,
-      fbAppID: '',
+;(remarkPlugins = [
+  {
+    resolve: 'gatsby-remark-images',
+    options: {
+      backgroundColor: '#fafafa',
+      maxWidth: 1035,
     },
   },
-  plugins: [
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: 'blog',
+  {
+    resolve: `gatsby-remark-prismjs`,
+    options: {
+      // classPrefix: 'language-',
+      inlineCodeMarker: null,
+      aliases: {},
+      showLineNumbers: false,
+      noInlineHighlight: false,
+      prompt: {
+        user: 'root',
+        host: 'localhost',
+        global: false,
       },
     },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.mdx', '.md', '.markdown'],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              backgroundColor: '#fafafa',
-              maxWidth: 1035,
-            },
-          },
-        ],
+  },
+]),
+  (module.exports = {
+    pathPrefix: config.pathPrefix,
+    siteMetadata: {
+      siteUrl: config.siteUrl + pathPrefix,
+      title: config.siteTitle,
+      description: config.siteDescription,
+      keywords: ['programming', 'developer', 'big data'],
+      canonicalUrl: config.siteUrl,
+      image: config.siteLogo,
+      author: {
+        name: config.author,
+        minibio: `
+        Big Data developer, mathematics graduate. Interested in databases,
+        query languages and testability.
+      `,
+      },
+      social: {
+        fbAppID: '',
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: config.siteTitle,
-        short_name: config.siteTitleShort,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: 'standalone',
-        icons: [
-          {
-            src: '/android-chrome-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: '/android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+    plugins: [
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${__dirname}/content/pages`,
+          name: 'pages',
+        },
       },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: `GOOGLE_ID`,
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${__dirname}/content/blog`,
+          name: 'blog',
+        },
       },
-    },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
+      {
+        resolve: `gatsby-plugin-mdx`,
+        options: {
+          extensions: ['.mdx', '.md', '.markdown'],
+          // the duplicated plugins are because of
+          // https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
+          gatsbyRemarkPlugins: remarkPlugins,
+          plugins: remarkPlugins,
+        },
+      },
+      'gatsby-plugin-sharp',
+      'gatsby-transformer-sharp',
+      'gatsby-plugin-emotion',
+      'gatsby-plugin-catch-links',
+      'gatsby-plugin-react-helmet',
+      {
+        resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+        options: {
+          siteUrl: `https://vidlicka.dev`,
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-manifest',
+        options: {
+          icon: 'static/images/logo.svg',
+          name: config.siteTitle,
+          short_name: config.siteTitleShort,
+          description: config.siteDescription,
+          start_url: config.pathPrefix,
+          background_color: '#ff5722', // see colors.orange
+          theme_color: '#ff5722', // see colors.orange
+          display: 'standalone',
+        },
+      },
+      {
+        resolve: `gatsby-plugin-google-analytics`,
+        options: {
+          trackingId: `GOOGLE_ID`,
+        },
+      },
+      {
+        resolve: `gatsby-plugin-feed`,
+        options: {
+          query: `
           {
             site {
               siteMetadata {
@@ -106,19 +118,23 @@ module.exports = {
             }
           }
         `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.fields.date,
-                  url: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + '/' + edge.node.fields.slug,
+          feeds: [
+            {
+              serialize: ({ query: { site, allMdx } }) => {
+                return allMdx.edges.map(edge => {
+                  url =
+                    site.siteMetadata.siteUrl +
+                    '/' +
+                    edge.node.fields.relativeUrl
+                  return Object.assign({}, edge.node.frontmatter, {
+                    description: edge.node.excerpt,
+                    date: edge.node.frontmatter.date,
+                    url,
+                    guid: url,
+                  })
                 })
-              })
-            },
-            query: `
+              },
+              query: `
               {
                 allMdx(
                   limit: 1000,
@@ -128,30 +144,31 @@ module.exports = {
                   edges {
                     node {
                       excerpt(pruneLength: 250)
-                      fields { 
+                      frontmatter {
+                        title
                         slug
                         date
                       }
-                      frontmatter {
-                        title
+                      fields {
+                        relativeUrl
                       }
                     }
                   }
                 }
               }
             `,
-            output: '/rss.xml',
-            title: 'Blog RSS Feed',
-          },
-        ],
+              output: '/rss.xml',
+              title: 'Vidlička Blog RSS Feed',
+            },
+          ],
+        },
       },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/lib/typography`,
+      {
+        resolve: `gatsby-plugin-typography`,
+        options: {
+          pathToConfigModule: `src/lib/typography`,
+        },
       },
-    },
-    'gatsby-plugin-offline',
-  ],
-}
+      'gatsby-plugin-offline',
+    ],
+  })

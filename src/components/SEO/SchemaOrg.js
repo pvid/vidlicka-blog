@@ -10,7 +10,6 @@ export default React.memo(
     description,
     image,
     isBlogPost,
-    organization,
     title,
     url,
   }) => {
@@ -59,10 +58,8 @@ export default React.memo(
               name: author.name,
             },
             publisher: {
-              '@type': 'Organization',
-              url: organization.url,
-              logo: organization.logo,
-              name: organization.name,
+              '@type': 'Person',
+              name: author.name,
             },
             mainEntityOfPage: {
               '@type': 'WebSite',

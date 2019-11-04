@@ -23,41 +23,29 @@ const Header = ({ siteTitle }) => {
       <Container noVerticalPadding>
         <nav
           css={css`
+            font-size: 20px;
+            line-height: 1.25;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            a {
+              color: ${theme.colors.headerText};
+              margin-left: 16px;
+              margin-right: 16px;
+            }
           `}
         >
           <Link
             to="/"
             aria-label="go to homepage"
-            css={css`
-              color: white;
-              &:hover {
-                color: white;
-                text-decoration: none;
-              }
-            `}
           >
             {siteTitle}
           </Link>
           <div
             css={css`
-              font-size: 16px;
-              line-height: 1.25;
               display: flex;
               align-items: center;
-              a {
-                text-decoration: none;
-                color: ${theme.colors.white};
-                margin-left: 16px;
-                margin-right: 16px;
-              }
-              .active {
-                display: none;
-                visibility: hidden;
-              }
             `}
           >
             <div

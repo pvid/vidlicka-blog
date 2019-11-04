@@ -1,21 +1,18 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import SEO from 'components/SEO'
 import { css } from '@emotion/core'
 import Container from 'components/Container'
 import Layout from '../components/Layout'
-import { fonts } from '../lib/typography'
 import Share from '../components/Share'
 import config from '../../config/website'
 import { bpMaxSM } from '../lib/breakpoints'
+import SubscribeForm from '../components/Forms/Subscribe'
+import Comments from '../components/Comments'
 
-export default function Post({
-  data: { site, mdx },
-  pageContext: { next, prev },
-}) {
-  const author = mdx.frontmatter.author || config.author
+export default function Post({ data: { site, mdx } }) {
   const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
   const banner = mdx.frontmatter.banner
@@ -48,14 +45,11 @@ export default function Post({
                 text-align: center;
                 font-size: 15px;
                 opacity: 0.6;
-                font-family: ${fonts.regular}, sans-serif;
                 font-weight: normal;
                 margin: 0 5px;
               }
             `}
           >
-            {author && <h3>{author}</h3>}
-            {author && <span>—</span>}
             {date && <h3>{date}</h3>}
           </div>
           {banner && (
@@ -76,15 +70,22 @@ export default function Post({
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Container>
-        {/* <SubscribeForm /> */}
       </article>
       <Container noVerticalPadding>
         <Share
           url={`${config.siteUrl}/${mdx.frontmatter.slug}/`}
           title={title}
-          twitterHandle={config.twitterHandle}
         />
         <br />
+      </Container>
+
+      <Container noVerticalPadding>
+        <SubscribeForm />
+        <br />
+      </Container>
+
+      <Container noVerticalPadding>
+        <Comments />
       </Container>
     </Layout>
   )
@@ -95,7 +96,7 @@ export const pageQuery = graphql`
     site {
       ...site
     }
-    mdx(fields: { id: { eq: $id } }) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")

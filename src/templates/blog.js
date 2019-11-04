@@ -8,15 +8,13 @@ import Layout from '../components/Layout'
 import Link from '../components/Link'
 import { bpMaxSM, bpMaxMD } from '../lib/breakpoints'
 
-const Blog = ({
-  data: { site, allMdx },
-  pageContext: { pagination, categories },
-}) => {
-  const { page, nextPagePath, previousPagePath } = pagination
+const Blog = ({ data: { site, allMdx }, pageContext: { pagination } }) => {
+  // const page = [0, 1, 2, 3]
 
-  const posts = page
-    .map(id => allMdx.edges.find(edge => edge.node.id === id))
-    .filter(post => post !== undefined)
+  const previousPagePath = ''
+  const nextPagePath = ''
+
+  const posts = allMdx.edges.filter(post => post !== undefined)
 
   return (
     <Layout site={site}>
@@ -61,7 +59,7 @@ const Blog = ({
               >
                 <Link
                   aria-label={`View ${post.frontmatter.title} article`}
-                  to={`/${post.fields.slug}`}
+                  to={`/${post.fields.relativeUrl}`}
                 >
                   <Img sizes={post.frontmatter.banner.childImageSharp.fluid} />
                 </Link>
@@ -75,7 +73,7 @@ const Blog = ({
             >
               <Link
                 aria-label={`View ${post.frontmatter.title} article`}
-                to={`/${post.fields.slug}`}
+                to={`/${post.fields.relativeUrl}`}
               >
                 {post.frontmatter.title}
               </Link>
@@ -89,7 +87,7 @@ const Blog = ({
               {post.excerpt}
             </p>{' '}
             <Link
-              to={`/${post.fields.slug}`}
+              to={`/${post.fields.relativeUrl}`}
               aria-label={`view "${post.frontmatter.title}" article`}
             >
               Read Article →
@@ -127,16 +125,17 @@ export const pageQuery = graphql`
     }
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fields: { isPost: { eq: true } } }
+      filter: {
+        fields: { isBlogPost: { eq: true } }
+        frontmatter: { published: { eq: true } }
+      }
     ) {
       edges {
         node {
           excerpt(pruneLength: 300)
           id
           fields {
-            title
-            slug
-            date
+            relativeUrl
           }
           frontmatter {
             title
@@ -148,7 +147,6 @@ export const pageQuery = graphql`
                 }
               }
             }
-            slug
             keywords
           }
         }

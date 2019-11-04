@@ -1,10 +1,11 @@
 import React from 'react'
 import { css } from '@emotion/core'
 import { useTheme } from './Theming'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 import { TwitterShareButton, FacebookShareButton } from 'react-share'
 
-const Share = ({ url, title, twitterHandle }) => {
+const Share = ({ url, title }) => {
   const theme = useTheme()
   return (
     <div
@@ -16,7 +17,7 @@ const Share = ({ url, title, twitterHandle }) => {
           margin-right: 20px;
           cursor: pointer;
           :hover {
-            color: ${theme.colors.primary};
+            color: ${theme.colors.link};
           }
         }
         span {
@@ -35,17 +36,17 @@ const Share = ({ url, title, twitterHandle }) => {
         `}
       />
       <span>Share article</span>
-      <TwitterShareButton
-        url={url}
-        quote={title}
-        via={twitterHandle.split('@').join('')}
-      >
+
+      <CopyToClipboard text={url}>
+        <div>Copy link</div>
+      </CopyToClipboard>
+
+      <TwitterShareButton url={url} quote={title}>
         Twitter
       </TwitterShareButton>
       <FacebookShareButton
         url={url}
         quote={title}
-        via={twitterHandle.split('@').join('')}
         css={css`
           cursor: pointer;
         `}

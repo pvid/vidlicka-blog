@@ -63,10 +63,6 @@ export const latestArticle = graphql`
       edges {
         node {
           id
-          fields {
-            title
-            slug
-          }
           parent {
             ... on File {
               sourceInstanceName
@@ -75,7 +71,6 @@ export const latestArticle = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
-
             slug
           }
         }

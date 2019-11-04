@@ -9,7 +9,6 @@ import { bpMaxSM } from '../lib/breakpoints'
 import mdxComponents from './mdx'
 import Header from './Header'
 import reset from '../lib/reset'
-import { fonts } from '../lib/typography'
 import config from '../../config/website'
 import Footer from '../components/Footer'
 
@@ -20,7 +19,7 @@ const getGlobalStyles = theme => {
       color: ${theme.colors.text};
     }
     &::selection {
-      color: ${theme.colors.white};
+      color: ${theme.colors.headerText};
       background-color: ${theme.colors.primary};
     }
     a {
@@ -69,11 +68,12 @@ const getGlobalStyles = theme => {
       background: none;
     }
     em {
-      font-family: ${fonts.regularItalic};
+      font-style: italic;
     }
     strong {
       em {
-        font-family: ${fonts.semiboldItalic};
+        font-style: italic;
+        font-weight: 600;
       }
     }
     input {
@@ -81,7 +81,6 @@ const getGlobalStyles = theme => {
       border: 1px solid ${theme.colors.gray};
       padding: 5px 10px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-      font-family: ${fonts.regular};
       margin-top: 5px;
       ::placeholder {
         opacity: 0.4;
@@ -95,18 +94,17 @@ const getGlobalStyles = theme => {
       border-radius: 4px;
       background-color: ${theme.colors.primary};
       border: none;
-      color: ${theme.colors.white};
+      color: ${theme.colors.headerText};
       padding: 5px 10px;
       cursor: pointer;
       border: 1px solid ${theme.colors.primary};
       transition: all 150ms;
       :hover {
         background: ${lighten(0.05, theme.colors.primary)};
-        border: 1px solid ${lighten(0.05, theme.colors.primary)};
       }
     }
     pre {
-      background-color: #061526 !important;
+      // background-color: #061526 !important;
       border-radius: 4px;
       font-size: 16px;
       padding: 10px;
@@ -173,7 +171,7 @@ export default ({
   return (
     <ThemeProvider theme={theme}>
       <Fragment>
-        <Global styles={reset()} />
+        <Global styles={reset(theme)} />
         <Global styles={getGlobalStyles(theme)} />
         <div
           css={css`
@@ -200,7 +198,7 @@ export default ({
           {!noFooter && (
             <Footer
               author={site.siteMetadata.author.name}
-              noSubscribeForm={noSubscribeForm}
+              noSubscribeForm={true}
             />
           )}
         </div>
