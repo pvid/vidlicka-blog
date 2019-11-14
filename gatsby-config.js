@@ -78,6 +78,7 @@ require('dotenv').config({
       'gatsby-plugin-emotion',
       'gatsby-plugin-catch-links',
       'gatsby-plugin-react-helmet',
+      'gatsby-plugin-netlify',
       {
         resolve: `gatsby-plugin-react-helmet-canonical-urls`,
         options: {

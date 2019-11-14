@@ -68,13 +68,19 @@ exports.createPages = ({ actions, graphql }) =>
     if (errors) {
       return Promise.reject(errors)
     }
-
     if (_.isEmpty(data.allMdx)) {
       return Promise.reject('There are no posts!')
     }
 
     const { edges } = data.allMdx
     const { createRedirect, createPage } = actions
+
+    createRedirect({
+      fromPath: '/',
+      toPath: '/blog',
+      redirectInBrowser: process.env.CLIENT_SIDE_REDIRECTS,
+    })
+
     createPosts(createPage, createRedirect, edges)
     createBlogPage(actions.createPage, edges, '/blog', {})
   })
