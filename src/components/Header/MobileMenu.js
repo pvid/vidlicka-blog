@@ -10,7 +10,7 @@ const Toggle = ({ children }) => {
   const [isToggledOn, setToggle] = useState(false)
   const toggle = () => setToggle(!isToggledOn)
   const theme = useTheme()
-  const color = theme.colors.headerBg
+  const color = theme.colors.headerText
 
   return (
     <div
@@ -100,7 +100,7 @@ const Toggle = ({ children }) => {
               align-items: center;
               justify-content: space-evenly;
               a {
-                color: white;
+                color: ${theme.colors.headerText};
                 font-size: 22px;
                 margin: 10px 0;
                 padding: 10px;

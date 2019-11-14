@@ -9,15 +9,13 @@ module.exports = {
   siteDescription: 'This is where they post things!',
   author: 'Pavol Vidlička', // Author for schemaORGJSONLD
 
-  // siteFBAppID: '123456789', // Facebook App ID - Optional
-  // userTwitter: '', // Twitter Username
   ogSiteName: "Pavol Vidlička's blog", // Facebook Site Name
   ogLanguage: 'en_US',
   googleAnalyticsID: '',
 
   // Manifest and Progress color
-  themeColor: '#CC8B86',
-  backgroundColor: '#CC8B86',
+  themeColor: '#e6e6e6',
+  backgroundColor: '#e6e6e6',
 
   // Social component
   github: 'https://github.com/pvid/',

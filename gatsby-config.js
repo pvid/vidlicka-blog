@@ -92,8 +92,8 @@ require('dotenv').config({
           short_name: config.siteTitleShort,
           description: config.siteDescription,
           start_url: config.pathPrefix,
-          background_color: '#ff5722', // see colors.orange
-          theme_color: '#ff5722', // see colors.orange
+          background_color: config.backgroundColor,
+          theme_color: config.themeColor,
           display: 'standalone',
         },
       },
