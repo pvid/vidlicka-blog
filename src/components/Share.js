@@ -32,7 +32,6 @@ const Share = ({ url, title }) => {
       <div
         css={css`
           flex-grow: 1;
-          border-top: 1px solid ${theme.colors.gray};
         `}
       />
       <span>Share article</span>

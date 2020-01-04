@@ -9,8 +9,8 @@ import Layout from '../components/Layout'
 import Share from '../components/Share'
 import config from '../../config/website'
 import { bpMaxSM } from '../lib/breakpoints'
-import SubscribeForm from '../components/Forms/Subscribe'
 import Comments from '../components/Comments'
+import Subscribe from '../components/Subscribe'
 
 export default function Post({ data: { site, mdx } }) {
   const date = mdx.frontmatter.date
@@ -67,6 +67,18 @@ export default function Post({ data: { site, mdx } }) {
               />
             </div>
           )}
+          <div
+            css={css`
+              display: flex;
+              margin-bottom: 20px;
+              text-align: center;
+              opacity: 0.6;
+              font-weight: normal;
+              margin: 0 5px;
+            `}
+          >
+            {mdx.frontmatter.description}
+          </div>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
         </Container>
@@ -78,9 +90,8 @@ export default function Post({ data: { site, mdx } }) {
         />
         <br />
       </Container>
-
       <Container noVerticalPadding>
-        <SubscribeForm />
+        <Subscribe url={config.newsletter.url} />
         <br />
       </Container>
 
@@ -99,6 +110,7 @@ export const pageQuery = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
+        description
         date(formatString: "MMMM DD, YYYY")
         author
         banner {

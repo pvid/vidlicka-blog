@@ -33,7 +33,7 @@ export default function Post({ data: { site, mdx } }) {
           {banner && (
             <div
               css={css`
-                padding: 30px;
+                padding: 15px 0px;
                 ${bpMaxSM} {
                   padding: 0;
                 }

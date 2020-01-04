@@ -84,8 +84,8 @@ const Blog = ({ data: { site, allMdx }, pageContext: { pagination } }) => {
                 margin-top: 10px;
               `}
             >
-              {post.excerpt}
-            </p>{' '}
+              {post.frontmatter.description}
+            </p>
             <Link
               to={`/${post.fields.relativeUrl}`}
               aria-label={`view "${post.frontmatter.title}" article`}
@@ -140,6 +140,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             date(formatString: "MMMM DD, YYYY")
+            description
             banner {
               childImageSharp {
                 fluid(maxWidth: 600) {
