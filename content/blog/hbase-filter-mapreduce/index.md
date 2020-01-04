@@ -106,3 +106,26 @@ public class Life {
     }
 }
 ```
+
+```scala
+object EvenOdd {
+  // evenOdd([], [], []).
+  implicit def emptyList = new EvenOdd[HNil, HNil, HNil] {}
+
+  // evenOdd([A], [A], []).
+  implicit def oneElement[A] = new EvenOdd[A :: HNil, A :: HNil, HNil] {}
+
+  // evenOdd([A, B | Tail], [A | TailEven], [B | TailOdd]) :-
+  //     evenOdd(Tail, TailEven, TailOdd).
+  implicit def atLeastTwoElements[
+      A,
+      B,
+      Tail <: HList,
+      TailEven <: HList,
+      TailOdd <: HList
+  ](
+      implicit ev: EvenOdd[Tail, TailEven, TailOdd]
+  ) =
+    new EvenOdd[A :: B :: Tail, A :: TailEven, B :: TailOdd] {}
+}
+```

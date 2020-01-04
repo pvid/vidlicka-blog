@@ -13,18 +13,18 @@ require('dotenv').config({
     },
   },
   {
-    resolve: `gatsby-remark-prismjs`,
+    resolve: `gatsby-remark-vscode`,
+    // All options are optional. Defaults shown here.
     options: {
-      // classPrefix: 'language-',
-      inlineCodeMarker: null,
-      aliases: {},
-      showLineNumbers: false,
-      noInlineHighlight: false,
-      prompt: {
-        user: 'root',
-        host: 'localhost',
-        global: false,
-      },
+      colorTheme: 'Dark+ (default dark)',
+      injectStyles: true, // Injects (minimal) additional CSS for layout and scrolling
+      extensions: [
+        {
+          identifier: 'scala-lang.scala',
+          version: '0.3.8',
+        },
+      ],
+      logLevel: 'error', // Set to 'warn' to debug if something looks wrong
     },
   },
 ]),
