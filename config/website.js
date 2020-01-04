@@ -29,4 +29,10 @@ module.exports = {
     'issue-term': 'url',
     label: 'comments',
   },
+
+  // Newsletter
+  newsletter: {
+    url:
+      'https://gmail.us4.list-manage.com/subscribe/post?u=ddc09f566f977379b0b16d919&amp;id=2ddbd1b5a3',
+  },
 }
