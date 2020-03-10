@@ -14,14 +14,17 @@ require('dotenv').config({
   },
   {
     resolve: `gatsby-remark-vscode`,
-    // All options are optional. Defaults shown here.
     options: {
-      colorTheme: 'Monokai',
-      injectStyles: true, // Injects (minimal) additional CSS for layout and scrolling
+      colorTheme: 'One Dark Pro',
+      injectStyles: true,
       extensions: [
         {
           identifier: 'scala-lang.scala',
           version: '0.3.8',
+        },
+        {
+          identifier: 'zhuangtongfa.Material-theme',
+          version: '3.2.3',
         },
       ],
       logLevel: 'error', // Set to 'warn' to debug if something looks wrong
