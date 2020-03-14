@@ -9,15 +9,38 @@ published: true
 author: Pavol Vidlička
 ---
 
-Lorem ipsum, lorem impsum
+- distributed NoSQL database built on top of Hadoop File System
+- built for real-time access to big data
+
+- powerful extension mechanisms with filters and coprocessors which allow to do custom filtering and processsing
+  of data locally on regionservers before returning to the caller
+- can be seen as a platform for building distributed systems and higher-level databases
+  - mention Phoenix, Kylin, timeseries DB, HGraphDB
+
+Common use-case is to store raw or partially aggregated data and do the final aggregation on request,
+for example to populate a dashboard or do pre-defined analytical queries over a small slice of data.
+
+I want to demonstrate how to build such a system by implementing a flexible general-purpose data-processing framework,
+that can do aggregations on the fly
 
 ## HBase data model crash course
 
-- metion Cell aka KeyValue
-- rowkey
-- CF
-- column
-- versions
+- mention Cell aka KeyValue - the basic unit of data
+  - identified by (rowkey, CF, qualifier, timestamp(version))
+  - split by rowkey into Regions, which can reside on different machines
+  - physically stored in CFs within a single region
+  - sorted by qualifier wihin a CF and row
+
+You access data by doing a rowkey range scan and choosing CFs to include
+
+You can model your data very flexibly, because everything is just bytes.
+Wide column database - values in different columns are heterogenous.
+Often homogenous, different "fields" are packed together (for example, Phoenix does that)
+
+Regions are the units of parallelism
+
+- The data in a given region are processed sequentially
+- you get parallelism, the data needs to be split into multiple regions (maybe mention salting? - if you want to parallelize a query, the data it accessed need to be spread out)
 
 ## HBase (filter)MapReduce examples
 
@@ -33,9 +56,10 @@ Lorem ipsum, lorem impsum
 
 ### Some queries
 
-- wordcount
+- word count
 - ...
 - mention API docs
+- it is not polished. Flex with Spark Encoders - something similar would allow to use higher level functions, not working with bytes all the time
 
 ## Translate into lower level API
 
@@ -45,16 +69,20 @@ Lorem ipsum, lorem impsum
 ## Filters
 
 - callback based
+- mention that they can also transform value - they are akin to mappers in MapReduce
 - link FilterBase
 
 ## Endpoint coprocessors
 
 - observer and endpoint differences (mention more on observers later - blog post)
+- we use them to implement something similar to combiners
+- the client acts as a single reducer
 - contract
 - embedded server
 
-## Do not use this in production
+## Disclaimer section
 
+- Do not use this in production
 - custom serialization = bad idea
 - remote code execution in your database
 - overhead vs SLAs
