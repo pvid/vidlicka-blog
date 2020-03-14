@@ -16,7 +16,7 @@ require('dotenv').config({
     resolve: `gatsby-remark-vscode`,
     // All options are optional. Defaults shown here.
     options: {
-      colorTheme: 'Dark+ (default dark)',
+      colorTheme: 'Monokai',
       injectStyles: true, // Injects (minimal) additional CSS for layout and scrolling
       extensions: [
         {
@@ -82,7 +82,7 @@ require('dotenv').config({
       {
         resolve: `gatsby-plugin-react-helmet-canonical-urls`,
         options: {
-          siteUrl: `https://vidlicka.dev`,
+          siteUrl: config.siteUrl,
         },
       },
       {
@@ -96,12 +96,6 @@ require('dotenv').config({
           background_color: config.backgroundColor,
           theme_color: config.themeColor,
           display: 'standalone',
-        },
-      },
-      {
-        resolve: `gatsby-plugin-google-analytics`,
-        options: {
-          trackingId: `GOOGLE_ID`,
         },
       },
       {
