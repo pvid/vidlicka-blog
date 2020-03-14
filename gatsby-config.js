@@ -125,7 +125,7 @@ require('dotenv').config({
                     '/' +
                     edge.node.fields.relativeUrl
                   return Object.assign({}, edge.node.frontmatter, {
-                    description: edge.node.excerpt,
+                    description: edge.node.frontmatter.description,
                     date: edge.node.frontmatter.date,
                     url,
                     guid: url,
@@ -136,16 +136,19 @@ require('dotenv').config({
               {
                 allMdx(
                   limit: 1000,
-                  filter: { frontmatter: { published: { ne: false } } }
                   sort: { order: DESC, fields: [frontmatter___date] }
+                  filter: {
+                    fields: { isBlogPost: { eq: true } }
+                    frontmatter: { published: { eq: true } }
+                  }
                 ) {
                   edges {
                     node {
-                      excerpt(pruneLength: 250)
                       frontmatter {
                         title
                         slug
                         date
+                        description
                       }
                       fields {
                         relativeUrl
@@ -155,7 +158,7 @@ require('dotenv').config({
                 }
               }
             `,
-              output: '/rss.xml',
+              output: config.rss.relariveUrl,
               title: 'Vidlička Blog RSS Feed',
             },
           ],

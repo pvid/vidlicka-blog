@@ -91,7 +91,10 @@ export default function Post({ data: { site, mdx } }) {
         <br />
       </Container>
       <Container noVerticalPadding>
-        <Subscribe url={config.newsletter.url} />
+        <Subscribe
+          newsletterUrl={config.newsletter.url}
+          rss={config.rss.relariveUrl}
+        />
         <br />
       </Container>
 

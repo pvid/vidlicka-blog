@@ -2,7 +2,7 @@ import React from 'react'
 import { css } from '@emotion/core'
 import { useTheme } from './Theming'
 
-const Subscribe = ({ url }) => {
+const Subscribe = ({ newsletterUrl, rss }) => {
   const theme = useTheme()
   return (
     <div
@@ -10,13 +10,15 @@ const Subscribe = ({ url }) => {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        a {
-          border-radius: 4px;
-          color: ${theme.colors.text};
-          background: ${theme.colors.headerBg};
-          padding: 10px 15px;
+        p {
           margin-right: 10px;
           margin-left: auto;
+        }
+        a {
+          border-radius: 4px;
+          padding: 5px 7px;
+          color: ${theme.colors.text};
+          background: ${theme.colors.headerBg};
           cursor: pointer;
           :hover {
             color: ${theme.colors.link};
@@ -25,7 +27,10 @@ const Subscribe = ({ url }) => {
         }
       `}
     >
-      <a href={url}>Subscribe to my newsletter</a>
+      <p>
+        Want to catch my next post? Subscribe via{' '}
+        <a href={newsletterUrl}>Email</a> or <a href={rss}>RSS</a>
+      </p>
     </div>
   )
 }

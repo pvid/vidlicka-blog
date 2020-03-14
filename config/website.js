@@ -6,7 +6,7 @@ module.exports = {
   siteUrl: 'https://vidlicka.dev', // Domain of your site. No trailing slash!
   siteLanguage: 'en', // Language Tag on <html> element
   siteLogo: 'images/logo.svg', // Used for SEO and manifest, path to your image you placed in the 'static' folder
-  siteDescription: 'This is where they post things!',
+  siteDescription: 'Stuff I am working on and interesed in',
   author: 'Pavol Vidlička', // Author for schemaORGJSONLD
 
   ogSiteName: "Pavol Vidlička's blog", // Facebook Site Name
@@ -33,5 +33,9 @@ module.exports = {
   newsletter: {
     url:
       'https://gmail.us4.list-manage.com/subscribe/post?u=ddc09f566f977379b0b16d919&amp;id=2ddbd1b5a3',
+  },
+
+  rss: {
+    relariveUrl: '/blog/rss.xml',
   },
 }
