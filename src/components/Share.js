@@ -41,8 +41,9 @@ const Share = ({ url, title }) => {
       </CopyToClipboard>
 
       <TwitterShareButton url={url} quote={title}>
-        Twitter
+        <div>Twitter</div>
       </TwitterShareButton>
+
       <FacebookShareButton
         url={url}
         quote={title}
@@ -50,7 +51,7 @@ const Share = ({ url, title }) => {
           cursor: pointer;
         `}
       >
-        Facebook
+        <div>Facebook</div>
       </FacebookShareButton>
     </div>
   )
