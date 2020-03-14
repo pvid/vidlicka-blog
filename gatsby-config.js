@@ -15,18 +15,9 @@ require('dotenv').config({
   {
     resolve: `gatsby-remark-vscode`,
     options: {
-      colorTheme: 'One Dark Pro',
+      theme: 'One Dark Pro',
       injectStyles: true,
-      extensions: [
-        {
-          identifier: 'scala-lang.scala',
-          version: '0.3.8',
-        },
-        {
-          identifier: 'zhuangtongfa.Material-theme',
-          version: '3.2.3',
-        },
-      ],
+      extensions: ['scala', 'material-theme'],
       logLevel: 'error', // Set to 'warn' to debug if something looks wrong
     },
   },
@@ -73,7 +64,6 @@ require('dotenv').config({
           // the duplicated plugins are because of
           // https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
           gatsbyRemarkPlugins: remarkPlugins,
-          plugins: remarkPlugins,
         },
       },
       'gatsby-plugin-sharp',

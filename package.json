@@ -8,7 +8,7 @@
     "@callstack/react-theme-provider": "^3.0.5",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.22",
-    "@hot-loader/react-dom": "16.10.2",
+    "@hot-loader/react-dom": "16.13.0",
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "core-js": "^3.3.3",
@@ -36,10 +36,11 @@
     "gatsby-plugin-typography": "^2.3.14",
     "gatsby-remark-copy-linked-files": "^2.1.28",
     "gatsby-remark-images": "^3.1.28",
-    "gatsby-remark-vscode": "^1.4.0",
+    "gatsby-remark-vscode": "^2.0.0",
     "gatsby-source-filesystem": "^2.1.33",
     "gatsby-transformer-remark": "^2.6.30",
     "gatsby-transformer-sharp": "^2.3.0",
+    "material-theme": "Binaryify/OneDark-Pro",
     "polished": "^3.4.1",
     "react": "^16.11.0",
     "react-copy-to-clipboard": "^5.0.1",
@@ -48,8 +49,9 @@
     "react-icons": "^3.7.0",
     "react-live": "^2.2.1",
     "react-markdown": "^4.2.2",
-    "react-share": "^3.0.1",
+    "react-share": "^4.1.0",
     "react-typography": "^0.16.19",
+    "scala": "https://github.com/scala/vscode-scala-syntax.git",
     "serve": "^11.2.0",
     "typescript": "^3.6.4",
     "typography": "^0.16.19",
@@ -57,7 +59,7 @@
   },
   "devDependencies": {
     "babel-preset-gatsby": "^0.2.20",
-    "prettier": "1.18.2"
+    "prettier": "1.19.1"
   },
   "keywords": [
     "gatsby"
