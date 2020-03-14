@@ -11,7 +11,6 @@ module.exports = {
 
   ogSiteName: "Pavol Vidlička's blog", // Facebook Site Name
   ogLanguage: 'en_US',
-  googleAnalyticsID: '',
 
   // Manifest and Progress color
   themeColor: '#e6e6e6',
