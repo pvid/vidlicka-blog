@@ -16,6 +16,7 @@ export default function Post({ data: { site, mdx } }) {
   const date = mdx.frontmatter.date
   const title = mdx.frontmatter.title
   const banner = mdx.frontmatter.banner
+  const readingTime = mdx.fields.readingTime.text
 
   return (
     <Layout site={site} frontmatter={mdx.frontmatter}>
@@ -69,15 +70,12 @@ export default function Post({ data: { site, mdx } }) {
           )}
           <div
             css={css`
-              display: flex;
-              margin-bottom: 20px;
-              text-align: center;
               opacity: 0.6;
               font-weight: normal;
-              margin: 0 5px;
+              margin: 20px 50px;
             `}
           >
-            {mdx.frontmatter.description}
+            {mdx.frontmatter.description + ' (' + readingTime + ')'}
           </div>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -111,6 +109,7 @@ export const pageQuery = graphql`
       ...site
     }
     mdx(id: { eq: $id }) {
+      body
       frontmatter {
         title
         description
@@ -126,7 +125,11 @@ export const pageQuery = graphql`
         slug
         keywords
       }
-      body
+      fields {
+        readingTime {
+          text
+        }
+      }
     }
   }
 `

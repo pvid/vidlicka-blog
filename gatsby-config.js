@@ -61,11 +61,10 @@ require('dotenv').config({
         resolve: `gatsby-plugin-mdx`,
         options: {
           extensions: ['.mdx', '.md', '.markdown'],
-          // the duplicated plugins are because of
-          // https://github.com/gatsbyjs/gatsby/issues/15486#issuecomment-510153237
           gatsbyRemarkPlugins: remarkPlugins,
         },
       },
+      `gatsby-remark-reading-time`,
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
       'gatsby-plugin-emotion',
