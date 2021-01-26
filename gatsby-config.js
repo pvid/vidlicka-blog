@@ -81,6 +81,9 @@ require('dotenv').config({
         resolve: 'gatsby-plugin-manifest',
         options: {
           icon: 'static/images/logo.svg',
+          icon_options: {
+            purpose: `any maskable`,
+          },
           name: config.siteTitle,
           short_name: config.siteTitleShort,
           description: config.siteDescription,
