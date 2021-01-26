@@ -73,9 +73,11 @@ export default function Post({ data: { site, mdx } }) {
               opacity: 0.6;
               font-weight: normal;
               margin: 20px 50px;
+              text-align: center;
             `}
           >
-            {mdx.frontmatter.description + ' (' + readingTime + ')'}
+            <div>{mdx.frontmatter.description}</div>
+            <div>{readingTime}</div>
           </div>
           <br />
           <MDXRenderer>{mdx.body}</MDXRenderer>
