@@ -1,4 +1,7 @@
 {
   "editor.formatOnSave": true,
-  "markdown.extension.tableFormatter.enabled": false
+  "markdown.extension.tableFormatter.enabled": false,
+  "files.watcherExclude": {
+    "**/target": true
+  }
 }
