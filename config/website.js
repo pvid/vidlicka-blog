@@ -25,7 +25,7 @@ module.exports = {
   comments: {
     repo: 'pvid/vidlicka-blog-comments',
     branch: 'master',
-    'issue-term': 'url',
+    'issue-term': 'title',
     label: 'comments',
   },
 
