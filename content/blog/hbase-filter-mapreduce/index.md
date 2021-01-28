@@ -4,7 +4,7 @@ date: 2021-01-28
 title: 'HBase (filter)MapReduce'
 description: 'Explore advanced uses of HBase filters and endpoint coprocessors by building a toy data processing framework.'
 tags: ['HBase']
-keywords: ['hbase', 'filters', 'coprocessors']
+keywords: ['hbase', 'filter', 'coprocessor']
 published: true
 author: Pavol Vidlička
 ---
