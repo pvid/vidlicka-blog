@@ -52,11 +52,12 @@
     "react-markdown": "^4.2.2",
     "react-share": "^4.1.0",
     "react-typography": "^0.16.19",
-    "scala": "https://github.com/scala/vscode-scala-syntax.git",
     "serve": "^11.2.0",
     "typescript": "^3.6.4",
     "typography": "^0.16.19",
-    "typography-theme-github": "^0.16.19"
+    "typography-theme-github": "^0.16.19",
+    "vsc-prolog": "https://github.com/rebornix/vscode-prolog.git",
+    "vsc-scala": "https://github.com/scala/vscode-scala-syntax.git"
   },
   "devDependencies": {
     "babel-preset-gatsby": "^0.2.20",

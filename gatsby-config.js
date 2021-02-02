@@ -17,7 +17,7 @@ require('dotenv').config({
     options: {
       theme: 'One Dark Pro',
       injectStyles: true,
-      extensions: ['scala', 'material-theme'],
+      extensions: ['vsc-scala', 'vsc-prolog', 'material-theme'],
       logLevel: 'error', // Set to 'warn' to debug if something looks wrong
     },
   },
