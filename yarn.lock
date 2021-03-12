@@ -13150,10 +13150,6 @@ sax@>=0.6.0, sax@^1.2.4, sax@~1.2.4:
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
 
-"scala@https://github.com/scala/vscode-scala-syntax.git":
-  version "0.5.0"
-  resolved "https://github.com/scala/vscode-scala-syntax.git#fb98da1db7cabec23dffa9a07465d8b35e0d1c31"
-
 scheduler@^0.19.0, scheduler@^0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
@@ -15328,6 +15324,14 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
+
+"vsc-prolog@https://github.com/rebornix/vscode-prolog.git":
+  version "0.0.4"
+  resolved "https://github.com/rebornix/vscode-prolog.git#fd23799552ac0b5996ce331ff34bae0930087102"
+
+"vsc-scala@https://github.com/scala/vscode-scala-syntax.git":
+  version "0.5.0"
+  resolved "https://github.com/scala/vscode-scala-syntax.git#fb98da1db7cabec23dffa9a07465d8b35e0d1c31"
 
 vscode-textmate@4.2.2:
   version "4.2.2"
