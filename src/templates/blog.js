@@ -78,7 +78,7 @@ const Blog = ({ data: { site, allMdx }, pageContext: { pagination } }) => {
                 {post.frontmatter.title}
               </Link>
             </h2>
-            {/* <small>{post.frontmatter.date}</small> */}
+            <small>{post.frontmatter.date}</small>
             <p
               css={css`
                 margin-top: 10px;
