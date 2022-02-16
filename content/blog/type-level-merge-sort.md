@@ -137,7 +137,8 @@ implicitly[GT[_1, _5]]
 
 fails with
 
-```could not find implicit value for parameter e: shapeless.ops.nat.GT[shapeless.nat._1,shapeless.nat._5]
+```text
+could not find implicit value for parameter e: shapeless.ops.nat.GT[shapeless.nat._1,shapeless.nat._5]
 ```
 
 In the first case, the compiler can use Peano axioms encoded into implicit values
