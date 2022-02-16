@@ -1,0 +1,52 @@
+<section>
+  <div id="comments-light-mode">
+    <script
+      src="https://utteranc.es/client.js"
+      repo="{{ $.Site.Params.utterances.repo }}"
+      issue-term="{{ $.Site.Params.utterances.issueTerm }}"
+      label="{{ $.Site.Params.utterances.label }}"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </div>
+
+  <div id="comments-dark-mode">
+    <script
+      src="https://utteranc.es/client.js"
+      repo="{{ $.Site.Params.utterances.repo }}"
+      issue-term="{{ $.Site.Params.utterances.issueTerm }}"
+      label="{{ $.Site.Params.utterances.label }}"
+      theme="github-dark"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </div>
+</section>
+
+<script>
+  var utterancesLight = document.getElementById("comments-light-mode");
+  var utterancesDark = document.getElementById("comments-dark-mode");
+
+  // init the right comment color
+  if (localStorage.getItem("pref-theme") === "dark") {
+    utterancesLight.style.display = "none";
+  } else if (localStorage.getItem("pref-theme") === "light") {
+    utterancesDark.style.display = "none";
+  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    utterancesLight.style.display = "none";
+  }
+
+  function toggle(elem) {
+    if (elem.style.display == "none") {
+      elem.style.display = "block";
+    } else {
+      elem.style.display = "none";
+    }
+  }
+
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    toggle(utterancesLight);
+    toggle(utterancesDark);
+  });
+</script>
