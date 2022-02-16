@@ -35,6 +35,8 @@
     utterancesDark.style.display = "none";
   } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     utterancesLight.style.display = "none";
+  } else {
+    utterancesDark.style.display = "none";
   }
 
   function toggle(elem) {
