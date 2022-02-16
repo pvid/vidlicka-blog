@@ -1,0 +1,69 @@
+baseURL: "https://vidlicka.dev/"
+theme: "PaperMod"
+title: "Vidlička"
+
+enableRobotsTXT: true
+
+minify:
+  disableXML: true
+  minifyOutput: true
+
+params:
+  homeInfoParams:
+    Title: "Personal tech blog"
+    Content: "Hi! I am Pavol. I hope that you'll find something enjoyable and interesting here"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/pvid/"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/pavol-vidlicka"
+    - name: email
+      url: "mailto:pavol.vidlicka@gmail.com"
+    - name: rss
+      url: "blog/index.xml"
+
+  ShowShareButtons: true
+
+  newsletterUrl: "https://gmail.us4.list-manage.com/subscribe/post?u=ddc09f566f977379b0b16d919&amp;id=2ddbd1b5a3"
+
+  comments: true
+
+  utterances:
+    repo: "pvid/vidlicka-blog-comments"
+    branch: "master"
+    issueTerm: "title"
+    label: "comments"
+
+  assets:
+    disableHLJS: true
+
+markup:
+  highlight:
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    # noClasses: false
+    style: dracula
+
+menu:
+  main:
+    - identifier: archive
+      name: archive
+      url: /archive
+      weight: 10
+    - identifier: search
+      name: search
+      url: /search
+      weight: 20
+    - identifier: about
+      name: about me
+      url: /about
+      weight: 30
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON

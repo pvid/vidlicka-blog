@@ -1,0 +1,24 @@
+.subscribe-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: var(--content-gap);
+  margin-bottom: var(--content-gap);
+}
+
+.subscribe-cta p {
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.subscribe-cta a {
+  padding: 5px;
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.subscribe-cta a:hover {
+  background: var(--border);
+}
